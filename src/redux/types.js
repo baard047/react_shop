@@ -1,0 +1,4 @@
+//USER
+export const SET_CURRENT_USER = 'USR/SET_CURRENT_USER';
+
+//...
