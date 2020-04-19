@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Switch, Route } from 'react-router-dom'
 
-import { auth } from './firebase/firebase_utils';
+import { auth, createUserRecord } from './firebase/firebase_utils';
 
 import './App.css';
 
@@ -18,8 +18,19 @@ class App extends Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged( user => {
-            this.setState({ currentUser: user })
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+            if(user) {
+                const userRef = await createUserRecord(user);
+                userRef.onSnapshot(snapshot => {
+                    this.setState({
+                        currentUser: {
+                            id: snapshot.id,
+                            ...snapshot.data()
+                        }
+                    });
+                });
+            }
+            else { this.setState({ currentUser: null }) }
         });
     }
 
