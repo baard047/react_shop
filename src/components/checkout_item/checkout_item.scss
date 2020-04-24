@@ -27,6 +27,11 @@
 
     .arrow {
       cursor: pointer;
+      //to prevent double click selection
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .quantity-value {
@@ -37,5 +42,11 @@
   .remove-button {
     padding-left: 12px;
     cursor: pointer;
+
+    //to prevent double click selection
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }

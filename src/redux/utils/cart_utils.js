@@ -23,8 +23,9 @@ export const removeItemFromCart = (cartItems, candidate) => {
     const existing = cartItems.find(cartItem => cartItem.id === candidate.id);
 
     if ( existing.quantity === 1 ) {
+        return cartItems;
         //TODO maybe don't need to remove
-        return clearItemFromCart(cartItems, candidate);
+        //return clearItemFromCart(cartItems, candidate);
     }
 
     return cartItems.map(
