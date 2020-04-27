@@ -22,20 +22,20 @@ class App extends Component {
     componentDidMount() {
         const {setCurrentUser} = this.props;
 
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-            if ( user ) {
-                const userRef = await createUserRecord(user);
-                userRef.onSnapshot(snapshot => {
-                    setCurrentUser({
-                        id: snapshot.id,
-                        ...snapshot.data()
-                    });
-                });
-            }
-            else {
-                setCurrentUser(null);
-            }
-        });
+        //this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+        //    if ( user ) {
+        //        const userRef = await createUserRecord(user);
+        //        userRef.onSnapshot(snapshot => {
+        //            setCurrentUser({
+        //                id: snapshot.id,
+        //                ...snapshot.data()
+        //            });
+        //        });
+        //    }
+        //    else {
+        //        setCurrentUser(null);
+        //    }
+        //});
     }
 
     componentWillUnmount() {

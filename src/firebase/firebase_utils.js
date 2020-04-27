@@ -6,9 +6,6 @@ import FirebaseConfig from "./firebase_config";
 
 firebase.initializeApp(FirebaseConfig);
 
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-googleAuthProvider.setCustomParameters({prompt: 'select_account'});
-
 export const createUserRecord = async (user, additionalData) => {
     if (!user) {
         return;
@@ -67,6 +64,9 @@ export const convertCollectionsSnapshotToMap = collections  => {
         return accumulator;
     }, {});
 };
+
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+googleAuthProvider.setCustomParameters({prompt: 'select_account'});
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
