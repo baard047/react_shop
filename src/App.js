@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/selectors/user_selectors";
 
-import { auth, createUserRecord } from './firebase/firebase_utils';
-import { setCurrentUser } from "./redux/actions/user_actions";
 
 import './App.css';
 
@@ -20,7 +18,6 @@ class App extends Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-        const {setCurrentUser} = this.props;
 
         //this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
         //    if ( user ) {
@@ -62,8 +59,4 @@ const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser
 });
 
-const mapDispatchToProps = dispatch => ({
-    setCurrentUser: user => dispatch(setCurrentUser(user))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
